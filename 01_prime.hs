@@ -9,5 +9,5 @@ ld :: Integer -> Integer
 ld n = ldf 2 n
 
 ldf k n | divides k n = k
-        | k^2 > n = n
+        | k^2 >= n = n
         | otherwise = ldf (k+1) n
