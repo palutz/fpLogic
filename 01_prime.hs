@@ -28,3 +28,10 @@ prime0 :: Integer -> Bool
 prime0 n  | n < 1     = error "not a positive integer"
           | n == 1    = False
           | otherwise = ld n == n 
+
+-- using guarded equations (not abbreviated) 
+prime0b :: Integer -> Bool
+prime0b n | n < 1     = error "not a positive integer"
+prime0b n | n == 1    = False
+prime0b n             = ld n == n 
+
