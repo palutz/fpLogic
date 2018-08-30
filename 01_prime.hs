@@ -38,3 +38,8 @@ prime0b n | n < 1     = error "not a positive integer"
 prime0b n | n == 1    = False
 prime0b n             = ld n == n 
 
+-- get the minimun of a list
+mnmInt :: [Int] -> Int
+mnmInt [] = error "empty list"
+mnmInt [x] = x
+mnmInt (x:xs) = min x (mnmInt xs)
