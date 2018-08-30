@@ -10,7 +10,10 @@ where
 -- 2) if n > 1 and n is not prime, then (LD(n))^2 <= n
 
 -- divdes denominator numbertodivide 
-divides :: Integer -> Integer -> Bool
+-- simple type definition
+-- divides :: Integer -> Integer -> Bool
+-- more correct:
+divides :: Integral a => a -> a -> Bool 
 divides d n = rem n d == 0
 
 -- least divisor function
