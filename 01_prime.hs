@@ -1,4 +1,4 @@
-module GS
+module Steo_GS
 
 where 
 
