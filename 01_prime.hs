@@ -60,3 +60,17 @@ maxInt [] = error "empty list"
 maxInt [x] = x
 maxInt (x:xs) = max' x (maxInt xs)
 
+-- 1.10 - removeFst, removes the 1st occurence of an int from a list. if no occurence list is unchanged
+removeFst :: [Int] -> Int -> [Int]
+removeFst [] y = []
+removeFst [x] y = if x == y then []
+                  else [x]
+removeFst (x:xs) y =  rmvFstInner (x:xs) y []
+
+-- recursive (iunner implementation of removeFst
+rmvFstInner :: [Int] -> Int -> [Int] -> [Int]
+rmvFstInner [] y r = r
+rmvFstInner [x] y r = if x == y then r
+                      else (r ++ [x])
+rmvFstInner (x:xs) y r = if x == y then (r ++ xs)
+                         else rmvFstInner xs y (r ++ [x])
