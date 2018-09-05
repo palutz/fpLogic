@@ -74,3 +74,12 @@ rmvFstInner [x] y r = if x == y then r
                       else (r ++ [x])
 rmvFstInner (x:xs) y r = if x == y then (r ++ xs)
                          else rmvFstInner xs y (r ++ [x])
+
+
+-- 1.11 - define a function that sorts a list of int in order of increasing size:
+-- - if the list is empty ,the list is already sorted
+-- - if the list is not empty, put the minimum in front of the new list resulting on the prev removing the minimum
+
+srtInts :: [Int] -> [Int]
+srtInts [] = []
+srtInts xs = m : (srtInts (removeFst xs m)) where m = mnmInt xs
