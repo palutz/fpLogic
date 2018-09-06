@@ -66,7 +66,7 @@ removeFst y [] = []
 removeFst y [x] = if x == y then []
                   else [x]
 removeFst y (x:xs) =  if x == y then xs
-                      else x : removeFst y xs
+                      else x : removeFst y xs  -- append the 1st element to the result of the recursive call
 
 -- 1.11) define a function that sorts a list of int in order of increasing size:
 -- - if the list is empty ,the list is already sorted
@@ -74,3 +74,31 @@ removeFst y (x:xs) =  if x == y then xs
 srtInts :: [Int] -> [Int]
 srtInts [] = []
 srtInts xs = m : (srtInts (removeFst m xs)) where m = mnmInt xs
+
+-- 1.12) function that calculare the average of a list
+average :: [Int] -> Rational
+average [] = 0.0
+average xs = toRational (sum xs) / toRational (length xs)
+
+-- homemade version of the sum 
+sum' :: [Int] -> Int 
+sum' [] = 0
+sum' (x:xs) = x + (sum' xs)
+
+-- homemade version of length
+length' :: [a] -> Int
+length' [] = 0
+length' (x:xs) = 1 + length' xs
+
+
+-- 1.13) counting the occurence of a char in a string 
+count' :: Char -> String -> Int 
+count' c [] = 0
+count' c (x:xs) = if x == c then 1 + (count' c xs)
+                            else count' c xs
+
+-- 1.14) write a function blowup that transform a string a1a2a3 .. in a1a2a2a3a3a3,,,,
+-- eg. bang -> baannngggg
+blowUp :: String -> String
+blowUp [] = []
+
