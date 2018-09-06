@@ -60,26 +60,17 @@ maxInt [] = error "empty list"
 maxInt [x] = x
 maxInt (x:xs) = max' x (maxInt xs)
 
--- 1.10 - removeFst, removes the 1st occurence of an int from a list. if no occurence list is unchanged
-removeFst :: [Int] -> Int -> [Int]
-removeFst [] y = []
-removeFst [x] y = if x == y then []
+-- 1.10) removeFst, removes the 1st occurence of an int from a list. if no occurence list is unchanged
+removeFst :: Int -> [Int] -> [Int]
+removeFst y [] = []
+removeFst y [x] = if x == y then []
                   else [x]
-removeFst (x:xs) y =  rmvFstInner (x:xs) y []
+removeFst y (x:xs) =  if x == y then xs
+                      else x : removeFst y xs
 
--- recursive (iunner implementation of removeFst
-rmvFstInner :: [Int] -> Int -> [Int] -> [Int]
-rmvFstInner [] y r = r
-rmvFstInner [x] y r = if x == y then r
-                      else (r ++ [x])
-rmvFstInner (x:xs) y r = if x == y then (r ++ xs)
-                         else rmvFstInner xs y (r ++ [x])
-
-
--- 1.11 - define a function that sorts a list of int in order of increasing size:
+-- 1.11) define a function that sorts a list of int in order of increasing size:
 -- - if the list is empty ,the list is already sorted
 -- - if the list is not empty, put the minimum in front of the new list resulting on the prev removing the minimum
-
 srtInts :: [Int] -> [Int]
 srtInts [] = []
-srtInts xs = m : (srtInts (removeFst xs m)) where m = mnmInt xs
+srtInts xs = m : (srtInts (removeFst m xs)) where m = mnmInt xs
