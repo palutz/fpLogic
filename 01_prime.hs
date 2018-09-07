@@ -99,6 +99,14 @@ count' c (x:xs) = if x == c then 1 + (count' c xs)
 
 -- 1.14) write a function blowup that transform a string a1a2a3 .. in a1a2a2a3a3a3,,,,
 -- eg. bang -> baannngggg
+repChar :: Char -> Int -> String
+repChar c n = if n > 0 then [c] ++ repChar c (n - 1)
+                else []
+
+innerBlow :: String -> Int -> String -> String
+innerBlow [] _ acc = acc
+innerBlow (x:xs) n acc = innerBlow xs (n + 1) (acc ++ (repChar x (n + 1)))
+
 blowUp :: String -> String
-blowUp [] = []
+blowUp s = innerBlow s 0 ""
 
