@@ -110,3 +110,21 @@ innerBlow (x:xs) n acc = innerBlow xs (n + 1) (acc ++ (repChar x (n + 1)))
 blowUp :: String -> String
 blowUp s = innerBlow s 0 ""
 
+-- 1.15) Sort a list of string in alphabetical order
+minStr :: String -> String -> String
+minStr a1 a2  | a1 > a2 = a2
+              | otherwise = a1
+
+removeFstS :: String -> [String] -> [String]
+removeFstS _ [] = []
+removeFstS c [x] = if x == c then []
+                   else [x]
+removeFstS c (x:xs) = if c == x then xs
+                      else x : (removeFstS c xs)
+
+srtStrings :: [String] -> [String]
+srtStrings [] = []
+-- srtStrings (x:xs) = s1 : ( ) where s1 = 
+
+-- 1,16) check if a string (str1) is a prefix of the other (str2)
+-- prefix :: String -> String -> Bool
