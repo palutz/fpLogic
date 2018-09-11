@@ -130,7 +130,7 @@ srtStrings :: [String] -> [String]
 srtStrings [] = []
 srtStrings (xs) = s1 :srtStrings (srtStrings (removeFstS s1 xs)) where s1 = minStrs xs
 
--- 1,16) check if a string (str1) is a prefix of the other (str2)
+-- 1.16) check if a string (str1) is a prefix of the other (str2)
 -- if 1st empty then prefix is true whatever will be the value of 2nd
 -- if 2nd is empty prefix will always be false
 -- otherwise we check the value of the first letter for both strings
@@ -138,3 +138,14 @@ prefix :: String -> String -> Bool
 prefix [] _ = True
 prefix xs [] = False
 prefix (x:xs) (y:ys) = (x==y) && (prefix xs ys)
+
+
+-- 1.17) find if x is a substring of y
+-- if xs is a prefix of ys, then xs is a prefix of ys
+-- if ys == y:ys' and xs is a prefix of ys' then xs is a substring of ys
+-- otherwise is false
+substring :: String -> String -> Bool
+substring [] _ = True
+substring xs [] = False
+substring xs (y:ys) = if prefix xs (y:ys) then True
+                          else substring xs ys
