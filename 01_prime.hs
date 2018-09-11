@@ -111,11 +111,13 @@ blowUp :: String -> String
 blowUp s = innerBlow s 0 ""
 
 -- 1.15) Sort a list of string in alphabetical order
+-- my min for string list
 minStrs :: [String] -> String
 minStrs [] = []
 minStrs [x] = x
 minStrs (x:xs) = min x (minStrs xs)
 
+-- remove first for string
 removeFstS :: String -> [String] -> [String]
 removeFstS _ [] = []
 removeFstS c [x] = if x == c then []
@@ -123,9 +125,16 @@ removeFstS c [x] = if x == c then []
 removeFstS c (x:xs) = if c == x then xs
                       else x : (removeFstS c xs)
 
+-- the actual sorting 
 srtStrings :: [String] -> [String]
 srtStrings [] = []
-srtStrings (xs) = s1 : (srtStrings (removeFstS s1 xs)) where s1 = minStrs xs
+srtStrings (xs) = s1 :srtStrings (srtStrings (removeFstS s1 xs)) where s1 = minStrs xs
 
 -- 1,16) check if a string (str1) is a prefix of the other (str2)
--- prefix :: String -> String -> Bool
+-- if 1st empty then prefix is true whatever will be the value of 2nd
+-- if 2nd is empty prefix will always be false
+-- otherwise we check the value of the first letter for both strings
+prefix :: String -> String -> Bool
+prefix [] _ = True
+prefix xs [] = False
+prefix (x:xs) (y:ys) = (x==y) && (prefix xs ys)
