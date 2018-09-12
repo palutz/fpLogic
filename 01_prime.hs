@@ -164,3 +164,21 @@ e b = b
 f' :: Int -> String -> Bool
 f' a1 b1 = (length b1) > a1
 f2 = flip (f')  -- f2 :: String -> Int -> Bool
+
+-- Prime factiorization algo
+factors :: Integer -> [Integer]
+factors n | n < 0 = error "negative number"
+          | n <= 1 = []
+          | otherwise = p : factors (div n p) where p = ld n
+
+-- map 
+-- map :: (a -> b) -> [a] -> [b]
+m1 = map (2 ^) [1..10]   -- [2,4,8,16,32,64,128,256,512,1024]
+m2 = map (^ 2) [1..10]   -- [1,4,9,16,25,36,49,64,81,100]
+
+-- create my own map
+mymap :: (a -> b) -> [a] -> [b]
+mymap _ [] = []
+mymap f (x:xs) = (f x) : (mymap f xs)
+
+-- 1.20
