@@ -181,4 +181,7 @@ mymap :: (a -> b) -> [a] -> [b]
 mymap _ [] = []
 mymap f (x:xs) = (f x) : (mymap f xs)
 
--- 1.20
+-- 1.20 map a list of string to a list of string length
+strLengths :: [String] -> [Int]
+strLengths [] = []
+strLengths xs = map (length) xs
