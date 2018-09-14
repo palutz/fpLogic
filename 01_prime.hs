@@ -194,3 +194,7 @@ myFilter :: (a -> Bool) -> [a] -> [a]
 myFilter _ [] = []
 myFilter f (x:xs) | f x = x : myFilter f xs
                   | otherwise = myFilter f xs
+
+-- 1.22 - use filter to wirte a program filtering all th eprime numbers from an infinite List
+primes0 :: [Integer] -> [Integer]
+primes0 l = myFilter prime0 l
