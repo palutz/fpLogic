@@ -188,3 +188,9 @@ strLengths xs = map (length) xs
 -- 1.21 - SumLengths - take list of lists and return the sum of their lengths
 sumLengths :: [[Char]] -> Int
 sumLengths l = sum (strLengths l)
+
+-- myFilter
+myFilter :: (a -> Bool) -> [a] -> [a]
+myFilter _ [] = []
+myFilter f (x:xs) | f x = x : myFilter f xs
+                  | otherwise = myFilter f xs
