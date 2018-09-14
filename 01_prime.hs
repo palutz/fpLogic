@@ -184,3 +184,7 @@ mymap f (x:xs) = (f x) : (mymap f xs)
 -- 1.20 map a list of string to a list of string length
 strLengths :: [String] -> [Int]
 strLengths xs = map (length) xs
+
+-- 1.21 - SumLengths - take list of lists and return the sum of their lengths
+sumLengths :: [[Char]] -> Int
+sumLengths l = sum (strLengths l)
