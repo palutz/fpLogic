@@ -200,6 +200,7 @@ primes0 :: [Integer] -> [Integer]
 primes0 l = myFilter prime0 l
 
 -- 1.23 - prime factorization with filter
+-- with a circle definition... and a first lazy list
 ldp :: Integer -> Integer
 ldp n = ldpf primes1 n
 
@@ -208,6 +209,8 @@ ldpf (x:xs) n | rem n x == 0 = x
               | x^2 > n      = n
               | otherwise = ldpf xs n
 
+-- the list of prime numbers (lazy.. compute only the part needed)
+-- avoiding the test on 2 we avoid problems with the circular reference
 primes1 :: [Integer]
 primes1 = 2 : filter prime [3..]
 
@@ -215,3 +218,7 @@ prime :: Integer -> Bool
 prime n | n < 1 = error "..."
         | n == 1 = False
         | otherwise = ldp n == n
+
+-- curried version of ldp
+ldp' :: Integer -> Integer
+ldp' = ldpf primes1
