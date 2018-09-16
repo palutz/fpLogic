@@ -198,3 +198,20 @@ myFilter f (x:xs) | f x = x : myFilter f xs
 -- 1.22 - use filter to wirte a program filtering all th eprime numbers from an infinite List
 primes0 :: [Integer] -> [Integer]
 primes0 l = myFilter prime0 l
+
+-- 1.23 - prime factorization with filter
+ldp :: Integer -> Integer
+ldp n = ldpf primes1 n
+
+ldpf :: [Integer] -> Integer -> Integer
+ldpf (x:xs) n | rem n x == 0 = x
+              | x^2 > n      = n
+              | otherwise = ldpf xs n
+
+primes1 :: [Integer]
+primes1 = 2 : filter prime [3..]
+
+prime :: Integer -> Bool
+prime n | n < 1 = error "..."
+        | n == 1 = False
+        | otherwise = ldp n == n
