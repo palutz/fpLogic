@@ -219,6 +219,11 @@ prime n | n < 1 = error "..."
         | n == 1 = False
         | otherwise = ldp n == n
 
--- curried version of ldp
+-- curried version of ldp 
+-- (primes1 is a [Integer] and ldpf1 signature is [Integer] -> Integer -> Integer
 ldp' :: Integer -> Integer
 ldp' = ldpf primes1
+
+f a b = a^2 + b^2
+-- another use :
+-- c = f a (f a b)
