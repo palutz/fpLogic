@@ -19,16 +19,16 @@ not1 False = True
 -- Conjunction 
 -- and :: Bool -> Bool -> Bool 
 (&&!) :: Bool -> Bool -> Bool 
-False &&! x = False
+False &&! _ = False
 True  &&! x = x
 
 -- Disjunction
 -- or :: Bool -> Bool -> Bool
 (||!) :: Bool -> Bool -> Bool
-True  ||! x = True
+True  ||! _ = True
 False ||! x = x
 
--- Implication 
+-- Implication ( => )
 -- if P then Q or Q if P; implication of P and Q
 -- implication is true if 
 --    both P (antecedent) and Q (consequent) are false
@@ -40,3 +40,17 @@ False ||! x = x
 -- or other implementation
 True  ==> x = x
 False ==> x = True
+
+-- CONVERSE AND CONTRAPOSITIVE 
+-- Converse P => Q is Q => P (if P => Q, Q => could not be true)
+-- Contrapositive P => Q is !Q => !P  (!Q => !P is true iff P => Q)
+-- NECESSARY AND SUFFICIENT CONDITIONS
+-- if P => Q holds then
+-- P is a sufficient condition for Q and Q is a necessary condition for P 
+-- We can express P => Q like
+-- if P then Q 
+-- Q if P
+-- P only if Q 
+-- Q whatever P 
+-- P is sufficient for Q 
+-- Q is necessary for P 
