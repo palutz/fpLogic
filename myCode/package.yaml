@@ -2,9 +2,9 @@ name:                myCode
 version:             0.1.0.0
 github:              "githubuser/myCode"
 license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2019 Author name here"
+author:              "palutz"
+maintainer:          "noinfo@acme.com"
+copyright:           "0101"
 
 extra-source-files:
 - README.md

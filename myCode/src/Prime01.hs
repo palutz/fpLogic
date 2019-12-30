@@ -1,6 +1,21 @@
-module Steo_GS
+-- First Chapter Prime numbers
 
-where 
+module Prime01
+  ( divides
+  , ld, ldf
+  , mnmInt
+  , maxInt
+  , removeFst
+  , srtInts
+  , blowUp
+  , srtStrings
+  , removeFstS
+  , ldp, ldpf, ldp'
+  , factors
+  , primes0
+  , primes1
+  , prime
+               ) where 
 
 -- Prime number
 --
@@ -150,21 +165,6 @@ substring xs [] = False
 substring xs (y:ys) = if prefix xs (y:ys) then True
                           else substring xs ys
 
--- Haskell type game...
-a :: [String]
-a = ["st1", "st2", "st3", "...", "stn"]
-b :: (Bool, String)
-b = (True, "this is True")
-c :: [(Bool, String)]
-c = [(True, "This is"), (False, "This is not"), (True, "True")]
-d :: ([Bool], String)
-d = ([True, True, False], "list of")
-e :: Bool -> Bool
-e b = b
-f' :: Int -> String -> Bool
-f' a1 b1 = (length b1) > a1
-f2 = flip (f')  -- f2 :: String -> Int -> Bool
-
 -- Prime factiorization algo
 factors :: Integer -> [Integer]
 factors n | n < 0 = error "negative number"
@@ -195,7 +195,7 @@ myFilter _ [] = []
 myFilter f (x:xs) | f x = x : myFilter f xs
                   | otherwise = myFilter f xs
 
--- 1.22 - use filter to wirte a program filtering all th eprime numbers from an infinite List
+-- 1.22 - use filter to write a program filtering all the prime numbers from an infinite List
 primes0 :: [Integer] -> [Integer]
 primes0 l = myFilter prime0 l
 
@@ -224,6 +224,6 @@ prime n | n < 1 = error "..."
 ldp' :: Integer -> Integer
 ldp' = ldpf primes1
 
-f a b = a^2 + b^2
+-- f a b = a^2 + b^2
 -- another use :
 -- c = f a (f a b)
